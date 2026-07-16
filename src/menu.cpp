@@ -2,6 +2,7 @@
 #include <vector>
 #include "menu.h"
 #include "materia.h"
+#include "tools.h"
 using namespace std;
 
 void menu(){
@@ -19,7 +20,7 @@ void menu(){
         cout << "5. Editar Materia" << endl;
         cout << "6. Eliminar Materia" << endl;
         cout << "7. Guardar y Salir" << endl;
-        cin >> option;
+        validarEntradaEntero(option);
         switch(option){
             case 1:
                 agregarMateria(materias);

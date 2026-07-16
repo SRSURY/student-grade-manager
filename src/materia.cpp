@@ -2,6 +2,7 @@
 #include <vector>
 #include <fstream>
 #include "materia.h"
+#include "tools.h"
 using namespace std;
 
 void agregarMateria(vector<Materia>& materias){
@@ -10,12 +11,12 @@ void agregarMateria(vector<Materia>& materias){
     cout << "Ingresa el Nombre de la Materia: ";
     getline(cin, m.nombre);
     cout << "Ingresa la Nota de la Materia: ";
-    cin >> m.nota;
+    validarEntradaDecimal(m.nota);
     cout << "Ingresa el Tipo de la Materia (Universidad o Colegio): "; 
-    cin >> m.tipo;
+    getline(cin, m.tipo);
     if(m.tipo == "Universidad" || m.tipo == "universidad"){
         cout << "Cuantos Creditos tiene la Materia: ";
-        cin >> m.creditos;
+        validarEntradaEntero(m.creditos);
     }else{
         m.creditos = 0;
     }
@@ -63,7 +64,7 @@ void editarMateria(vector<Materia>& materias){
     }
     int indice,op;
     cout << "¿Que Materia deseas Editar?" << endl;
-    cin >> indice;
+    validarEntradaEntero(indice);
     indice -= 1;
     do{
        cout << "1. Nombre " << endl;
@@ -71,7 +72,7 @@ void editarMateria(vector<Materia>& materias){
        cout << "3. Tipo " << endl;
        cout << "4. Creditos " << endl;
        cout << "5. Cancelar " << endl;
-       cin >> op;
+       validarEntradaEntero(op);
 
        switch(op){
         case 1: {
@@ -83,7 +84,7 @@ void editarMateria(vector<Materia>& materias){
         }
         case 2: {
             float newNote;
-            cin >> newNote;
+            validarEntradaDecimal(newNote);
             materias[indice].nota = newNote;
             break;
         }
@@ -95,7 +96,7 @@ void editarMateria(vector<Materia>& materias){
         }
         case 4: {
             int newCredito;
-            cin >> newCredito;
+            validarEntradaEntero(newCredito);
             materias[indice].creditos = newCredito;
             break;
         }
@@ -116,10 +117,10 @@ void eliminarMateria(vector<Materia>& materias){
     }
     int indice,op;
     cout << "¿Que Materia deseas Eliminar?" << endl;
-    cin >> indice;
+    validarEntradaEntero(indice);
     indice -= 1;
     cout << "Confirmas Eliminar esta Materia? (1/0):";
-    cin >> op;
+    validarEntradaEntero(op);
     if(op == 1){
         materias.erase(materias.begin() + indice);
         cout << "Se Elimino con Exito";
