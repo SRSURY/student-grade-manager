@@ -1,2 +1,4 @@
 # Student Grade Manager C++
-Proyecto en Progreso
+Proyecto Finalizado
+
+## Estado: ✅ COMPLETADO
